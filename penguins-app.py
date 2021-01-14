@@ -2,10 +2,17 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import pickle
+from sklearn.neural_network import MLPClassifier
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import RandomForestClassifier
 
+st.title ("Penguins Classifier")
+
 st.write("""
-# Penguin Prediction App
+# Penguin Prediction App (Multi-Layered Perceptron / MLP)
+
+### Created By : [DeanTevin](https://deantevin.github.io/)
 
 This app predicts the **Palmer Penguin** species!
 
@@ -70,7 +77,6 @@ load_clf = pickle.load(open('penguins_clf.pkl', 'rb'))
 # Apply model to make predictions
 prediction = load_clf.predict(df)
 prediction_proba = load_clf.predict_proba(df)
-
 
 st.subheader('Prediction')
 penguins_species = np.array(['Adelie','Chinstrap','Gentoo'])
